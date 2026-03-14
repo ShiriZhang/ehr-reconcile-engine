@@ -1,0 +1,27 @@
+{
+  "patient_context": {
+    "age": 1,
+    "conditions": [
+      "Family history of other cardiovascular diseases",
+      "Pure hypercholesterolemia",
+      "Need for desensitization to allergens",
+      "Late effects of cerebrovascular disease, hemiplegia affecting unspecified side",
+      "Unspecified pleural effusion"
+    ],
+    "recent_labs": {}
+  },
+  "sources": [
+    {
+      "system": "Synthetic MIMIC Visit 110361",
+      "medication": "ceftazidime 1000 MG Injection [Tazicef] 1g Vial via IV",
+      "last_updated": "1952-04-10",
+      "source_reliability": "high"
+    },
+    {
+      "system": "Synthetic MIMIC Visit 110360",
+      "medication": "tamsulosin hydrochloride 0.4 MG Oral Capsule 0.4mg Capsule via PO",
+      "last_updated": "1952-03-18",
+      "source_reliability": "medium"
+    }
+  ]
+}

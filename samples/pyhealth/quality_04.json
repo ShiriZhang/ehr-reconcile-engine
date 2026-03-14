@@ -1,0 +1,27 @@
+{
+  "demographics": {
+    "name": "Synthetic MIMIC Patient 1000",
+    "dob": "1881-12-27",
+    "gender": "M"
+  },
+  "medications": [
+    "acetaminophen 650 MG Rectal Suppository [Acephen] 650MG SUPP via PR",
+    "1000 ML potassium chloride 0.02 MEQ/ML / sodium chloride 9 MG/ML Injection 1000 mL Bag via IV",
+    "5 ML metoprolol tartrate 1 MG/ML Injection 5mg/5mL Vial via IV",
+    "phenytoin sodium 100 MG Extended Release Oral Capsule 100mg Capsule via PO",
+    "Miconazole Nitrate 0.02 MG/MG Topical Powder [Mitrazol] 30g Bottle via TP"
+  ],
+  "allergies": [],
+  "conditions": [
+    "Closed fracture of pubis",
+    "Bacteremia",
+    "Percutaneous transluminal coronary angioplasty status",
+    "Opioid type dependence, continuous",
+    "Acquired coagulation factor deficiency"
+  ],
+  "vital_signs": {
+    "blood_pressure": "128/78",
+    "heart_rate": 72
+  },
+  "last_updated": "1882-12-19"
+}

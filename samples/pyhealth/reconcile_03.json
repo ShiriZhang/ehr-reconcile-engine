@@ -1,0 +1,33 @@
+{
+  "patient_context": {
+    "age": 1,
+    "conditions": [
+      "Aortocoronary bypass status",
+      "Acute and subacute necrosis of liver",
+      "Hypertensive chronic kidney disease, unspecified, with chronic kidney disease stage V or end stage renal disease",
+      "Coronary atherosclerosis of native coronary artery",
+      "Ventilator associated pneumonia"
+    ],
+    "recent_labs": {}
+  },
+  "sources": [
+    {
+      "system": "Synthetic MIMIC Visit 110548",
+      "medication": "10 ML calcium gluconate 100 MG/ML Injection 1g/10mL Vial via IV",
+      "last_updated": "1841-08-16",
+      "source_reliability": "high"
+    },
+    {
+      "system": "Synthetic MIMIC Visit 110547",
+      "medication": "zinc sulfate 220 MG Oral Capsule 220mg Capsule via PO",
+      "last_updated": "1841-07-18",
+      "source_reliability": "medium"
+    },
+    {
+      "system": "Synthetic MIMIC Visit 110546",
+      "medication": "heparin sodium, porcine 5000 UNT/ML Injectable Solution 5000U/ML VIAL via SC",
+      "last_updated": "1841-07-04",
+      "source_reliability": "medium"
+    }
+  ]
+}

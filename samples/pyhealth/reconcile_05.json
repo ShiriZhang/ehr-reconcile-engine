@@ -1,0 +1,27 @@
+{
+  "patient_context": {
+    "age": 0,
+    "conditions": [
+      "Chronic pancreatitis",
+      "Anemia in chronic kidney disease",
+      "Acute kidney failure, unspecified",
+      "Urinary tract infection, site not specified",
+      "Hyposmolality and/or hyponatremia"
+    ],
+    "recent_labs": {}
+  },
+  "sources": [
+    {
+      "system": "Synthetic MIMIC Visit 110609",
+      "medication": "250 ML glucose 50 MG/ML Injection 250ML BAG via IV DRIP",
+      "last_updated": "2199-09-25",
+      "source_reliability": "high"
+    },
+    {
+      "system": "Synthetic MIMIC Visit 110608",
+      "medication": "1000 ML glucose 50 MG/ML / sodium chloride 4.5 MG/ML Injection 1000mL Bag via IV",
+      "last_updated": "2199-09-14",
+      "source_reliability": "medium"
+    }
+  ]
+}

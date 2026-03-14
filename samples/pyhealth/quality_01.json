@@ -1,0 +1,27 @@
+{
+  "demographics": {
+    "name": "Synthetic MIMIC Patient 1",
+    "dob": "2102-09-07",
+    "gender": "M"
+  },
+  "medications": [
+    "250 ML glucose 50 MG/ML Injection 250ML BAG via IV DRIP",
+    "Verapamil hydrochloride 120 MG Oral Tablet 120 mg Tab via PO",
+    "Lisinopril 20 MG Oral Tablet [Zestril] 20MG TAB via PO",
+    "Amoxicillin 500 MG / clavulanate potassium 125 MG Oral Tablet [Augmentin 500-mg] 500mg Tab via PO",
+    "sertraline 50 MG Oral Tablet [Zoloft] 50mg Tablet via PO"
+  ],
+  "allergies": [],
+  "conditions": [
+    "Contusion of lung without mention of open wound into thorax",
+    "Other postprocedural status",
+    "Diabetes with other specified manifestations, type II or unspecified type, uncontrolled",
+    "Hypoxemia",
+    "Secondary malignant neoplasm of other specified sites"
+  ],
+  "vital_signs": {
+    "blood_pressure": "340/180",
+    "heart_rate": 88
+  },
+  "last_updated": "2103-06-07"
+}

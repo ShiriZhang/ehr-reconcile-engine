@@ -107,8 +107,19 @@ npm test
 - Observed local response times in that run were about 5.5-5.8 seconds for OpenAI and 7.1-7.8 seconds for DeepSeek.
 - A forced-timeout check confirmed that provider timeouts still return HTTP 200 with rule-based fallback content.
 
-## PyHealth Data Note
-The project is prepared to expand with sample structures from [PyHealth data documentation](https://pyhealth.readthedocs.io/en/latest/api/data.html). For must-have delivery, local JSON fixtures are used so external dataset access does not block progress.
+## PyHealth Test Data Integration
+- `scripts/generate_pyhealth_fixtures.py` attempts to load Synthetic MIMIC-III through PyHealth and export request fixtures into `samples/pyhealth/`.
+- The export logic maps `NDC` and `ICD9CM` codes with `pyhealth.medcode.InnerMap`, then converts patient events into the existing API request shapes used by the backend.
+- Committed fixtures live in `samples/pyhealth/` so the test suite works without PyHealth installed or public dataset access.
+- The script includes a Windows-specific URL normalization workaround for PyHealth so the public Synthetic MIMIC-III root can be used from PowerShell environments that would otherwise produce backslash-corrupted URLs.
+- Backend validation for these fixtures lives in `backend/tests/test_pyhealth_fixtures.py`.
+
+Regenerate the fixtures:
+
+```bash
+pip install -r scripts/requirements-scripts.txt
+python scripts/generate_pyhealth_fixtures.py
+```
 
 ## What I Would Improve With More Time
 - Expand duplicate record detection into explicit grouped output for clinician review.

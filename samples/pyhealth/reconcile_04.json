@@ -1,0 +1,27 @@
+{
+  "patient_context": {
+    "age": 0,
+    "conditions": [
+      "Secondary malignant neoplasm of other respiratory organs",
+      "Malignant neoplasm of intrahepatic bile ducts",
+      "Atherosclerosis of renal artery",
+      "Pelvic peritoneal adhesions, female (postoperative) (postinfection)",
+      "Cellulitis and abscess of upper arm and forearm"
+    ],
+    "recent_labs": {}
+  },
+  "sources": [
+    {
+      "system": "Synthetic MIMIC Visit 110558",
+      "medication": "benztropine mesylate 1 MG Oral Tablet 1mg Tablet via PO",
+      "last_updated": "1894-11-15",
+      "source_reliability": "high"
+    },
+    {
+      "system": "Synthetic MIMIC Visit 110557",
+      "medication": "zolpidem tartrate 5 MG Oral Tablet 5mg Tablet via PO",
+      "last_updated": "1894-10-31",
+      "source_reliability": "medium"
+    }
+  ]
+}

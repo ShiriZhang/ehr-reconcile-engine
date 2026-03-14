@@ -1,0 +1,27 @@
+{
+  "demographics": {
+    "name": "Synthetic MIMIC Patient 10000",
+    "dob": "1987-08-14",
+    "gender": "M"
+  },
+  "medications": [
+    "Ibuprofen 400 MG Oral Tablet 400mg Tablet via PO",
+    "Thiamine 100 MG Oral Tablet 100MG TAB via PO",
+    "folic acid 1 MG Oral Tablet 1MG TAB via PO",
+    "Aluminum Hydroxide 40 MG/ML / Magnesium Hydroxide 40 MG/ML / Simethicone 4 MG/ML Oral Suspension [Maalox Plus] 148 mL Bottle via PO",
+    "2 ML ondansetron 2 MG/ML Injection 2mg/mL-2mL via IV"
+  ],
+  "allergies": [],
+  "conditions": [
+    "Hypoxemia",
+    "Alcohol withdrawal",
+    "Fever and other physiologic disturbances of temperature regulation",
+    "Chronic or unspecified gastrojejunal ulcer with hemorrhage, without mention of obstruction",
+    "Closed fracture of carpal bone, unspecified"
+  ],
+  "vital_signs": {
+    "blood_pressure": "128/78",
+    "heart_rate": 72
+  },
+  "last_updated": "1987-11-16"
+}

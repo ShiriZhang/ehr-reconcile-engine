@@ -44,3 +44,12 @@
 - JSON-first input keeps the UI simple while matching assessment payload examples.
 - Result cards prioritize confidence, safety status, issues, and actions.
 - Approve/reject is kept client-side in v1 to avoid inventing extra backend endpoints outside the assessment scope.
+
+## PyHealth Test Data Integration
+- `scripts/generate_pyhealth_fixtures.py` is the standalone export path for Synthetic MIMIC-III based request fixtures.
+- The script attempts to load Synthetic MIMIC-III with PyHealth, reads patient events through the Patient event API, and groups prescription events by `hadm_id` so each admission becomes one reconciliation source.
+- `pyhealth.medcode.InnerMap` is used to resolve `NDC` medication codes and `ICD9CM` diagnosis codes into human-readable labels, with raw-code fallback when a lookup misses.
+- Exported reconciliation fixtures are written to `samples/pyhealth/reconcile_*.json`; exported quality fixtures are written to `samples/pyhealth/quality_*.json`.
+- The quality fixtures intentionally keep `allergies` empty so the backend completeness rules continue to exercise the missing-allergies path, and one fixture includes implausible vital signs.
+- The script patches PyHealth URL normalization on Windows so `https://storage.googleapis.com/pyhealth/Synthetic_MIMIC-III/` remains a valid URL instead of being rewritten with backslashes.
+- Committed fixtures in `samples/pyhealth/` still serve as the offline test corpus and are validated by `backend/tests/test_pyhealth_fixtures.py`.

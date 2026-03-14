@@ -1,0 +1,26 @@
+{
+  "demographics": {
+    "name": "Synthetic MIMIC Patient 10",
+    "dob": "1959-05-16",
+    "gender": "F"
+  },
+  "medications": [
+    "Labetalol hydrochloride 5 MG/ML Injectable Solution 100 mg / 20 mL Vial via IV DRIP",
+    "Ciprofloxacin 500 MG Oral Tablet 500mg Tab via PO",
+    "Furosemide 20 MG Oral Tablet 20mg Tablet via PO",
+    "labetalol hydrochloride 200 MG Oral Tablet 200 mg Tablet via PO",
+    "2 ML diazepam 5 MG/ML Cartridge 10mg/2mL Vial via IV"
+  ],
+  "allergies": [],
+  "conditions": [
+    "Retention of urine, unspecified",
+    "Acute kidney failure, unspecified",
+    "Other persistent mental disorders due to conditions classified elsewhere",
+    "Unspecified visual loss"
+  ],
+  "vital_signs": {
+    "blood_pressure": "128/78",
+    "heart_rate": 72
+  },
+  "last_updated": "1959-06-17"
+}

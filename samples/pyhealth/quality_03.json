@@ -1,0 +1,27 @@
+{
+  "demographics": {
+    "name": "Synthetic MIMIC Patient 100",
+    "dob": "1986-12-09",
+    "gender": "F"
+  },
+  "medications": [
+    "50 ML potassium chloride 0.2 MEQ/ML Injection 10mEq/100ml Premix via IV",
+    "0.625 ML dolasetron mesylate 20 MG/ML Injection [Anzemet] 12.5mg Vial via IV",
+    "Morphine Sulfate 2 MG/ML Injectable Solution 2-4mg Range via IV",
+    "0.5 ML Streptococcus pneumoniae type 1 capsular polysaccharide antigen 0.05 MG/ML / Streptococcus pneumoniae type 10A capsular polysaccharide antigen 0.05 MG/ML / Streptococcus pneumoniae type 11A capsular polysaccharide antigen 0.05 MG/ML / Streptococ... 25mcg/0.5mL Vial via IM",
+    "Midazolam 1 MG/ML Injectable Solution 2mg/2mL Vial via IV"
+  ],
+  "allergies": [],
+  "conditions": [
+    "Coronary atherosclerosis of unspecified type of vessel, native or graft",
+    "Unspecified essential hypertension",
+    "Hemorrhage complicating a procedure",
+    "Aortocoronary bypass status",
+    "Other and unspecified alcohol dependence, unspecified"
+  ],
+  "vital_signs": {
+    "blood_pressure": "128/78",
+    "heart_rate": 72
+  },
+  "last_updated": "1987-03-17"
+}
