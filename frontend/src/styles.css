@@ -39,7 +39,8 @@ textarea {
   font-size: clamp(2.2rem, 4vw, 4.25rem);
   line-height: 1;
   margin: 0 0 16px;
-  max-width: 12ch;
+  max-width: 20ch;
+  text-wrap: balance;
 }
 
 .hero-copy {
@@ -260,6 +261,7 @@ textarea {
 }
 
 @media (max-width: 980px) {
+
   .hero,
   .workspace-grid,
   .result-grid,

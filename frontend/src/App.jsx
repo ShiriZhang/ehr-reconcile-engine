@@ -53,14 +53,19 @@ export default function App() {
           <p className="eyebrow">Clinical Data Reconciliation Engine</p>
           <h1>Resolve medication conflicts and audit EHR quality from one workstation.</h1>
           <p className="hero-copy">
-            FastAPI handles the API and rule engine, while OpenAI and DeepSeek can enrich the
-            reasoning layer with clinician-friendly explanations.
+            Compare medication records across systems, surface conflicts with
+            AI-assisted reasoning, and validate patient data quality — all in one
+            place.
           </p>
         </div>
         <div className="hero-card">
-          <span>Must-have coverage</span>
-          <strong>Auth, validation, AI fallback, tests, docs</strong>
-          <p>Optional support includes Docker and calibrated confidence scoring.</p>
+          <span>How it works</span>
+          <strong>Submit records, review results, approve or reject</strong>
+          <p>
+            Conflicting medications are reconciled with confidence scoring.
+            Patient records are audited for completeness, accuracy, and
+            clinical plausibility.
+          </p>
         </div>
       </section>
 
