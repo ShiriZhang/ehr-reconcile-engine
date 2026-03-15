@@ -7,7 +7,6 @@ from app.core.rules import (
     RELIABILITY_WEIGHTS,
     completeness_score,
     normalize_medication_name,
-    parse_medication_details,
     recency_score,
     safety_penalty,
 )
@@ -15,7 +14,8 @@ from app.core.scoring import calibrate_confidence
 
 
 def reconcile_medication_request(payload: MedicationReconcileRequest) -> dict[str, object]:
-    egfr = payload.patient_context.recent_labs.get("eGFR")
+    recent_labs = payload.patient_context.recent_labs
+    conditions = payload.patient_context.conditions
 
     scored_sources: list[dict[str, object]] = []
     normalized_counter = Counter(normalize_medication_name(source.medication) for source in payload.sources)
@@ -25,7 +25,8 @@ def reconcile_medication_request(payload: MedicationReconcileRequest) -> dict[st
             + recency_score(source.reference_date) * 0.35
             + completeness_score(source.system, source.medication, source.reference_date) * 0.15
         )
-        penalty = safety_penalty(source.medication, egfr)
+        safety_result = safety_penalty(source.medication, recent_labs, conditions)
+        penalty = safety_result.penalty
         duplicate_boost = 0.08 if normalized_counter[normalize_medication_name(source.medication)] > 1 else 0.0
         final_score = max(0.0, min(base_score - penalty + duplicate_boost, 1.0))
         scored_sources.append(
@@ -33,6 +34,7 @@ def reconcile_medication_request(payload: MedicationReconcileRequest) -> dict[st
                 "source": source,
                 "score": final_score,
                 "penalty": penalty,
+                "safety_reasons": safety_result.reasons,
             }
         )
 
@@ -46,7 +48,6 @@ def reconcile_medication_request(payload: MedicationReconcileRequest) -> dict[st
         agreement_ratio=agreement_ratio,
     )
 
-    medication_details = parse_medication_details(winner["source"].medication)
     actions = [
         f"Update other systems to reflect {winner['source'].medication}.",
         f"Confirm current regimen with {winner['source'].system}.",
@@ -55,10 +56,21 @@ def reconcile_medication_request(payload: MedicationReconcileRequest) -> dict[st
     reasoning_parts = [
         f"{winner['source'].system} was selected because it had the strongest combination of recency and source reliability.",
     ]
-    if winner["penalty"]:
-        reasoning_parts.append("Higher-dose alternatives were penalized due to renal safety concerns.")
-    if egfr is not None and "metformin" in str(medication_details["name"]):
-        reasoning_parts.append(f"Kidney function context was considered using eGFR {egfr}.")
+    penalized_alternatives = [item for item in scored_sources if item["penalty"] > 0 and item is not winner]
+    if penalized_alternatives:
+        alt_descriptions = [
+            f"{alt['source'].medication} from {alt['source'].system} "
+            f"(penalty applied: {'; '.join(alt['safety_reasons'])})"
+            for alt in penalized_alternatives
+        ]
+        reasoning_parts.append(
+            "Alternative regimens were deprioritized due to safety concerns: " + "; ".join(alt_descriptions) + "."
+        )
+    winner_reasons = winner["safety_reasons"]
+    if winner_reasons:
+        reasoning_parts.append(
+            "The selected medication also has safety considerations: " + "; ".join(winner_reasons) + "."
+        )
     if agreement_ratio > 0.5:
         reasoning_parts.append("Multiple sources reported the same regimen, increasing confidence.")
     reasoning = " ".join(reasoning_parts)
@@ -66,7 +78,14 @@ def reconcile_medication_request(payload: MedicationReconcileRequest) -> dict[st
     safety_status = "PASSED"
     if float(winner["penalty"]) > 0:
         safety_status = "WARNING"
-        actions.append("Review renal dosing and verify the latest prescription with the pharmacy.")
+        actions.append(
+            "Review dosing in light of the patient's lab values and conditions, and verify with the prescribing clinician."
+        )
+    elif penalized_alternatives:
+        safety_status = "WARNING"
+        actions.append(
+            "Alternative regimens were deprioritized due to safety concerns. Confirm the selected regimen is clinically appropriate."
+        )
 
     return {
         "reconciled_medication": winner["source"].medication,
