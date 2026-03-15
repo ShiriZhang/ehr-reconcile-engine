@@ -27,13 +27,15 @@
 - The rule engine is deterministic so the API remains usable even when the LLM layer is unavailable.
 
 ## Prompt Engineering Approach
-- Prompts include the raw request payload plus the rule-based draft output.
-- The model is instructed to return strict JSON only, reducing parsing ambiguity.
-- AI is responsible for:
-  - concise clinical reasoning
-  - recommended actions
-  - human-readable explanation of data quality concerns
-- AI is not trusted for baseline correctness. Deterministic logic produces the first answer, and the model only enriches it.
+The prompts follow a four-part structure:
+1. **Role assignment** — the model is cast as a domain expert (clinical pharmacist for reconciliation, data quality analyst for validation) to activate relevant medical reasoning.
+2. **Reasoning framework** — numbered steps guide the model through the same decision factors the rule engine uses: source reliability, recency, clinical safety, and cross-source agreement. This keeps AI output consistent with deterministic logic.
+3. **Strict output schema** — field names, types, and enum constraints are specified in the prompt to minimize parsing failures and Pydantic rejections.
+4. **Context injection** — the full patient payload plus the rule-based draft are included so the model can improve rather than regenerate from scratch.
+
+The system-level message adds a medical conservatism directive: when uncertain, the model should flag safety concerns rather than dismiss them. Temperature is set to 0.1 to favour deterministic, reproducible responses over creative variation.
+
+AI is not trusted for baseline correctness. Deterministic logic always produces the first answer, and the model only enriches the reasoning, recommended actions, and human-readable explanations. If the AI response fails schema validation, the rule-based result is returned unchanged.
 
 ## Reliability Guardrails
 - Missing API keys, rate limits, malformed LLM output, or provider failures do not break endpoint responses.

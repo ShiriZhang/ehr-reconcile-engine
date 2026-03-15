@@ -31,7 +31,15 @@ class ChatProvider:
         payload = {
             "model": self.model,
             "messages": [
-                {"role": "system", "content": "You return valid JSON only."},
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a clinical decision support system. "
+                        "You return valid JSON only, with no markdown fences or commentary. "
+                        "Your responses must be medically conservative — when uncertain, "
+                        "flag safety concerns rather than dismiss them."
+                    ),
+                },
                 {"role": "user", "content": prompt},
             ],
             "temperature": 0.1,
