@@ -7,7 +7,7 @@ export function JsonEditor({ title, value, onChange, onLoadSample, helperText })
           <h2>{title} Input</h2>
         </div>
         <button type="button" className="secondary-button" onClick={onLoadSample}>
-          Load sample
+          Reset to sample
         </button>
       </div>
       <p className="helper-text">{helperText}</p>

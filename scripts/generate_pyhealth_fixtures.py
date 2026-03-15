@@ -75,11 +75,12 @@ def resolve_condition(event: Any, icd9_map: Any) -> str | None:
 
 def calculate_age(patient_event: Any, reference_date: datetime | None) -> int | None:
     dob = to_iso_date(getattr(patient_event, "dob", None) if patient_event else None)
-    ref = to_iso_date(reference_date)
-    if not dob or not ref:
+    if not dob:
         return None
     try:
-        age = datetime.fromisoformat(ref).year - datetime.fromisoformat(dob).year
+        born = datetime.fromisoformat(dob)
+        today = date.today()
+        age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
     except ValueError:
         return None
     return max(0, min(age, 120))
