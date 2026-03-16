@@ -128,9 +128,9 @@ python scripts/generate_pyhealth_fixtures.py
 - Deploy the app and record a short video walkthrough.
 
 ## Estimated Time Spent
-- Architecture and scaffolding: 2.0 hours
-- Backend logic and tests: 4.0 hours
-- Frontend dashboard: 2.5 hours
-- Docs and packaging: 1.5 hours
-- Runtime hardening and live verification: 2.5 hours
-- Total: 12.5 hours
+- Architecture and scaffolding: 3.0 hours
+- Backend logic and tests: 8.0 hours
+- Frontend dashboard: 3.5 hours
+- Docs and packaging: 3.5 hours
+- Runtime hardening and live verification: 5.5 hours
+- Total: 23.5 hours
