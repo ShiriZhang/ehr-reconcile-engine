@@ -20,7 +20,7 @@ ehr-reconcile-engine/
 ├─ frontend/
 ├─ docs/
 ├─ samples/
-├─ PROJECT_TRACKER.md
+├─ scripts/
 └─ docker-compose.yml
 ```
 
@@ -101,11 +101,6 @@ npm test
 - In-memory caching keeps the implementation simple and cost-aware, but it is not shared across instances.
 - AI responses are schema-validated before being returned. Network errors, timeouts, malformed JSON, `429`, and `5xx` responses degrade cleanly to deterministic output.
 
-## Verification Notes
-- 2026-03-12: the sample medication and data-quality payloads were verified end to end against the configured OpenAI and DeepSeek providers.
-- Both providers returned valid JSON for their respective prompts and preserved the expected response schema.
-- Observed local response times in that run were about 5.5-5.8 seconds for OpenAI and 7.1-7.8 seconds for DeepSeek.
-- A forced-timeout check confirmed that provider timeouts still return HTTP 200 with rule-based fallback content.
 
 ## PyHealth Test Data Integration
 - `scripts/generate_pyhealth_fixtures.py` attempts to load Synthetic MIMIC-III through PyHealth and export request fixtures into `samples/pyhealth/`.
