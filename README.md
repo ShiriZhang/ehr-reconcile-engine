@@ -197,7 +197,7 @@ Pre-generated fixtures are committed under `samples/pyhealth/` so the test suite
 |-------|-------|
 | Architecture and scaffolding | 3.0 |
 | Backend logic and tests | 8.0 |
-| Frontend dashboard | 3.5 |
+| Frontend dashboard | 4 |
 | Docs and packaging | 3.5 |
 | Runtime hardening and live verification | 5.5 |
-| **Total** | **23.5** |
+| **Total** | **24** |
